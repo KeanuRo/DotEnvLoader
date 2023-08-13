@@ -1,0 +1,13 @@
+{
+  "name": "keanuro/dot-env-loader",
+  "authors": [
+    {
+      "name": "name",
+      "email": "test@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+    }
+  }
+}
