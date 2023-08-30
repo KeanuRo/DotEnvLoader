@@ -10,7 +10,19 @@ class DotEnvLoader
         while (false === $file->eof()) {
             $dotEnvLine = new DotEnvLine($file->fgets());
             $dotEnvVariable = $dotEnvLine->getDotEnvVariable();
-            $_SERVER[$dotEnvVariable->name] = $dotEnvVariable->value;
+
+            $this->loadToServerArray($dotEnvVariable);
+            $this->loadToLocalEnvVariable($dotEnvLine);
         }
+    }
+
+    private function loadToServerArray(DotEnvVariable $dotEnvVariable): void
+    {
+        $_SERVER[$dotEnvVariable->name] = $dotEnvVariable->value;
+    }
+
+    private function loadToLocalEnvVariable(DotEnvLine $dotEnvLine): void
+    {
+        putenv($dotEnvLine);
     }
 }
