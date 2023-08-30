@@ -3,7 +3,9 @@
 namespace Loader;
 
 
-class DotEnvLine
+use Stringable;
+
+class DotEnvLine implements Stringable
 {
     private const DELIMITER = '=';
 
@@ -24,6 +26,11 @@ class DotEnvLine
         }
 
         $this->line = $line;
+    }
+
+    public function __toString(): string
+    {
+        return $this->line;
     }
 
     public function getDotEnvVariable(): DotEnvVariable
